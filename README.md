@@ -1,5 +1,6 @@
 # Customer-service
 simple customer service system
-Todo:
-validate the user input
-adding the remove functions
+
+  <br />Todo list:
+  <br />1.validate the user input
+  <br />2.adding the remove functions
