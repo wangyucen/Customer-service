@@ -1,0 +1,61 @@
+PseudoCode
+//list declaration 
+categories, products, customers = [],[],[]
+//ID declaration 
+orderID,productID,customerID,categoryID
+//print menu
+fucntion printOpt()
+//print store info
+fucntion printData()
+//data insertion fucntions
+function insertCat()
+	enter info
+	categories.append()
+function insertProd()
+	enter info
+	products.append()
+function insertCustomer()
+	enter info
+	customers.append()
+
+function placeOrder()
+	enter customerID
+	enter productID
+	if valid
+		orders.append()	
+//the function which help to get total sales based on the product ID		
+fucntion getTotalSalesProd()
+	enter productID
+	for order in orders
+		if found
+			add to the sum
+	print sum
+//This fucntion print the total sales based on the Categories
+function getTotalSalesCat()
+	enter categoryID
+		for product in products
+			for order in orders
+				if productID the same and in this category
+					add to the sum
+		print details under this category	
+		
+//this fucntion sort the total sales amount for each product in whether ascending or descending order		
+function getTotalSalesPrice()	
+	for product in products
+		initiate sum
+		for order in orders
+			if found product add sum
+		add to dictionary
+	print sorted dictionary
+	
+//print the total sales of different locations
+getTotalSalesLoca()
+	generate the location list
+	for local in locals
+		initiate sum
+		for order in orders
+			if found add sum
+		print sum
+loop
+	ask for user input
+	call certain fucntions based on the user input
