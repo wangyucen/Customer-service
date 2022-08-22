@@ -63,21 +63,27 @@ def insertCat(categories,CatId):
 #insert the product funciton
 def insertProd(products,categories,productID):
     valid = False
-    categoryID = input("Please Type a valid category ID ")
+    categoryID_input = input("Please Type a valid category ID ")
 
-    for cat in categories:
-#        print(cat[0])
- #       print(type(cat[0]))
-        if cat[0] == categoryID:
-            valid=True
-    if not valid:
-        print("category ID not found, insertion failed")
+    if categoryID_input.isnumeric() == False:
+        print("not a valid input")
     else:
-        categoryID = int(categoryID)
-        pname = input("Please enter a Product name")
-        price = int(input("Please enter a Price"))
-        products.append([productID,pname,price,categoryID])
-        print("Product inserted")
+        for cat in categories:
+            categoryID= int(categoryID_input)
+            if cat[0] == categoryID:
+                valid=True
+        if not valid:
+            print("category ID not found, insertion failed")
+        else:
+            categoryID = int(categoryID)
+            pname = input("Please enter a Product name")
+            price_input = input("Please enter a Price")
+            if price_input.isnumeric()==True:
+                price=int(price_input)
+                products.append([productID,pname,price,categoryID])
+                print("Product inserted")
+            else:
+                print("not a valid price")
 
 #insert customer function
 def insertCustomer(customers,customerID):
