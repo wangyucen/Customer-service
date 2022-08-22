@@ -15,7 +15,7 @@ categoryID = 0
 def printOpt():
     print("---Welcome to the webshop admin page")
     print("|Type 1 to insert a new record\n"+
-          "|Type 2 to place a new order\n"+
+          "|Type 2 to edit orders\n"+
           "|Type 3 to print all the data\n"+
           "|Type 4 to print the menu\n"+
           "|Type 5 to get the total sales\n"+
@@ -261,6 +261,28 @@ def getTotalSalesLoca(customers,orders):
                 valid = True
         if valid:
             print("The total price products sold for location",loc,"is :",sum)
+def changeOrderStatus(orders):
+
+    orderID_input = input("Please enter a valid order ID you would like to change for")
+    if orderID_input.isnumeric() == True:
+        found = False
+        orderID=int(orderID_input)
+        for order in orders:
+            if order[0] == orderID:
+                statue = input("please enter a number you would like to change for this order(1.shipping 2.delivered")
+                if statue == "1":
+                    order[5] = "shipping"
+                    found= True
+                elif statue == "2":
+                    order[5] = "delivered"
+                    found = True
+                else:
+                    print("not a valid input")
+                    found = True
+        if not found:
+            print("ID not found")
+    else:
+        print("the ID you entered is not valid")
 
 #main code
 printOpt()
@@ -284,9 +306,22 @@ while True:
         else:
             print("invalid input, failed to insert new data")
     elif option == "2":
-        print("-------New Order Placement--------")
-        orderID = len(orders)
-        placeOrder(customers,products,orders,orderID)
+        print("-----Orders-----")
+        print("|Type 1 to place new orders")
+        print("|Type 2 to change order status")
+        orderOpt_input = input("Please Type you choice")
+        if orderOpt_input.isnumeric() == True:
+            if orderOpt_input == "1":
+                print("-------New Order Placement--------")
+                orderID = len(orders)
+                placeOrder(customers, products, orders, orderID)
+            elif orderOpt_input == "2":
+                print("--------Order Status Change-----")
+                changeOrderStatus(orders)
+
+        else:
+            print("invalid input")
+
     elif option == "3":
         printData(categories,products,customers,orders)
     elif option == "4":
@@ -324,7 +359,7 @@ while True:
 
             else:
                 print("Please input a valid ID number")
-        if deletion == "2":
+        elif deletion == "2":
             productID_input = input("Please enter the product ID you would like to delete")
             if productID_input.isnumeric() == True:
                 productID=int(productID_input)
@@ -332,20 +367,22 @@ while True:
 
             else:
                 print("Please input a valid ID number")
-        if deletion == "3":
+        elif deletion == "3":
             customerID_input = input("Please enter the customer ID you would like to delete")
             if customerID_input.isnumeric() == True:
                 customerID=int(customerID_input)
                 removeEle(customers,customerID)
             else:
                 print("Please input a valid ID number")
-        if deletion == "4":
+        elif deletion == "4":
             orderID_input = input("Please enter the order ID you would like to delete")
             if orderID_input.isnumeric() == True:
                 orderID=int(orderID_input)
                 removeEle(orders,orderID)
             else:
                 print("Please input a valid ID number")
+        else:
+            print("not a valid input")
     elif option == "7":
         break
     else:
