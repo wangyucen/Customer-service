@@ -206,7 +206,7 @@ def getTotalSalesCat(products, orders, categories):
     if not categoryID_input.isnumeric():
         print("invalid input, the category ID must be a numeric number")
     else:
-        print("--------Catogry ID:", categoryID, "-------")
+        categoryID = int(categoryID_input)
         for prod in products:
             quantity = 0
             total = 0
@@ -217,10 +217,7 @@ def getTotalSalesCat(products, orders, categories):
                     quantity += order[2]
                     valid = True
             if valid:
-                print("The total prices for Product ID ", prod[0], " is ", total, " , total quantity sold is", quantity)
-            else:
-                print("category nothing found")
-
+                print("The total price for Product ID ", prod[0], " is ", total, " , total quantity sold is", quantity)
 
 # this fucntion sort the total sales amount for each product in whether ascending or descending order
 def getTotalSalesPrice(products, orders):
@@ -281,7 +278,7 @@ def getTotalSalesLoca(customers, orders):
                 sum += ord[3]
                 valid = True
         if valid:
-            print("The total price products sold for location", loc, "is :", sum)
+            print("The total price of products sold for location", loc, "is :", sum)
 
 
 # change order status fuction
