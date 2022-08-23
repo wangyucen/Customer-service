@@ -15,13 +15,15 @@ categoryID = 0
 # print menu funciton
 def printOpt():
     print("---Welcome to the webshop admin page")
+    print("------------------------------------")
     print("|Type 1 to insert a new record\n" +
           "|Type 2 to edit orders\n" +
           "|Type 3 to print all the data\n" +
           "|Type 4 to print the menu\n" +
           "|Type 5 to get the total sales\n" +
           "|Type 6 to delete items\n" +
-          "|Type 7 to quit"
+          "|Type 7 to quit\n"
+          "--------------------------------"
           )
 
 
@@ -59,8 +61,8 @@ def printData(categories, products, customers, orders):
 
 # insert the category function
 def insertCat(categories, CatId):
-    CatName = input("Please enter a CatName")
-    CatDesc = input("Please enter a Cat Description")
+    CatName = input("Please enter a CatName: ")
+    CatDesc = input("Please enter a Cat Description: ")
     categories.append([CatId, CatName, CatDesc])
     print("category inserted")
 
@@ -68,7 +70,7 @@ def insertCat(categories, CatId):
 # insert the product funciton
 def insertProd(products, categories, productID):
     valid = False
-    categoryID_input = input("Please Type a valid category ID ")
+    categoryID_input = input("Please Type a valid category ID: ")
 
     if not categoryID_input.isnumeric():
         print("not a valid input")
@@ -81,8 +83,8 @@ def insertProd(products, categories, productID):
             print("category ID not found, insertion failed")
         else:
             categoryID = int(categoryID)
-            pname = input("Please enter a Product name")
-            price_input = input("Please enter a Price")
+            pname = input("Please enter a Product name: ")
+            price_input = input("Please enter a Price: ")
             if price_input.isnumeric():
                 price = int(price_input)
                 products.append([productID, pname, price, categoryID])
@@ -93,14 +95,14 @@ def insertProd(products, categories, productID):
 
 # insert customer function
 def insertCustomer(customers, customerID):
-    custEmail = input("Please enter a customer Email")
-    custPhone = input("please enter a customer Phone numer")
+    custEmail = input("Please enter a customer Email: ")
+    custPhone = input("please enter a customer Phone numer: ")
     if custPhone.isnumeric() == False or len(custPhone) > 10:
         print("not a valid phone number")
     else:
-        custAddress = input("Please enter a customer address")
-        custLocation = input("Please enter a customer location")
-        custCountry = input("please enter a customer country")
+        custAddress = input("Please enter a customer address: ")
+        custLocation = input("Please enter a customer location: ")
+        custCountry = input("please enter a customer country: ")
         customers.append([customerID, custEmail, custPhone, custAddress, custLocation, custCountry])
 
 
@@ -128,7 +130,7 @@ def placeOrder(customers, products, orders, orderID):
     cus_valid = False
     prod_valid = False
     price = 0
-    customerId_input = input("please enter the ID of the customer you want to place order for")
+    customerId_input = input("please enter the ID of the customer you want to place order for: ")
     if not customerId_input.isnumeric():
         print("the customer ID you entered is not valid, ID must be numeric")
     else:
@@ -142,7 +144,7 @@ def placeOrder(customers, products, orders, orderID):
         if not cus_valid:
             print("The customer ID you inserted not exist, insertion failed")
         if cus_valid:
-            productId = int(input("please enter the ID of the product you want to order"))
+            productId = int(input("please enter the ID of the product you want to order: "))
             for prod in products:
                 if productId == prod[0]:
                     prod_valid = True
@@ -151,7 +153,7 @@ def placeOrder(customers, products, orders, orderID):
         if not prod_valid and prod_valid:
             print("you have entered aN invalid Product ID, insertion failed")
         if cus_valid and prod_valid:
-            quantity = int(input("please enter the quantity or the products you would like to order for this customer"))
+            quantity = int(input("please enter the quantity or the products you would like to order for this customer: "))
             TotalPrices = quantity * price
             status = "Preparing"
             orders.append([orderID, productId, quantity, TotalPrices, customerId, status])
@@ -167,8 +169,9 @@ def getTotalSalesProd(orders, products):
             print(p.center(8), end="  ")
         print()
     print("all products above")
+    print("-----------------------")
 
-    input_productID = input("Please enter a valid Product ID")
+    input_productID = input("Please enter a valid Product ID: ")
     if not input_productID.isnumeric():
         print("invalid input,please enter a valid number")
     else:
@@ -202,7 +205,7 @@ def getTotalSalesCat(products, orders, categories):
             print(c.center(8), end="  ")
         print()
     print("all categories above")
-    categoryID_input = input("Please enter a valid Category ID")
+    categoryID_input = input("Please enter a valid Category ID: ")
     if not categoryID_input.isnumeric():
         print("invalid input, the category ID must be a numeric number")
     else:
@@ -222,7 +225,7 @@ def getTotalSalesCat(products, orders, categories):
 # this fucntion sort the total sales amount for each product in whether ascending or descending order
 def getTotalSalesPrice(products, orders):
     temp_input = input(
-        "In which order you would like to sort the Products sales, type 1 for higher to lower, type 0 for lower to higher")
+        "In which order you would like to sort the Products sales, type 1 for higher to lower, type 0 for lower to higher: ")
     if not temp_input.isnumeric():
         print("invalid input , please enter a valid number")
     else:
@@ -283,13 +286,13 @@ def getTotalSalesLoca(customers, orders):
 
 # change order status fuction
 def changeOrderStatus(orders):
-    orderID_input = input("Please enter a valid order ID you would like to change for")
+    orderID_input = input("Please enter a valid order ID you would like to change for: ")
     if orderID_input.isnumeric():
         found = False
         orderID = int(orderID_input)
         for order in orders:
             if order[0] == orderID:
-                statue = input("please enter a number you would like to change for this order(1.shipping 2.delivered")
+                statue = input("please enter a number you would like to change for this order(1.shipping 2.delivered): ")
                 if statue == "1":
                     order[5] = "shipping"
                     found = True
@@ -308,13 +311,13 @@ def changeOrderStatus(orders):
 # main code
 printOpt()
 while True:
-    option = input("Hi there, Please enter a option, enter 4 to print the menu again")
+    option = input("Hi there, Please enter a option, enter 4 to print the menu again: ")
     if option == "1":
         print("--------New Data-----------")
         print("|Type 1 to insert a new category")
         print("|Type 2 to insert a new product")
         print("|Type 3 to insert a new customer")
-        data_type = input("Please select the data type you would like to upload to the system\n")
+        data_type = input("Please select the data type you would like to upload to the system: \n")
         if data_type == "1":
             categoryID = len(categories)
             insertCat(categories, categoryID)
@@ -354,7 +357,7 @@ while True:
         print("|Type 2 to get the total sales based on the given Category ID")
         print("|Type 3 to get the sorted total sales for each product")
         print("|Type 4 to get the total sales based on the locations")
-        sales_type = input("Please choose the types of the total sales that can be queried for you:")
+        sales_type = input("Please choose the types of the total sales that can be queried for you: ")
         if sales_type == "1":
             getTotalSalesProd(orders, products)
         elif sales_type == "2":
@@ -373,7 +376,7 @@ while True:
         print("|Type 4 to delete the order record")
         deletion = input("Please enter a number to delete the record")
         if deletion == "1":
-            categoryID_input = input("Please enter the category ID you would like to delete")
+            categoryID_input = input("Please enter the category ID you would like to delete: ")
             if categoryID_input.isnumeric():
                 categoryID = int(categoryID_input)
                 removeEle(categories, categoryID)
@@ -384,7 +387,7 @@ while True:
             else:
                 print("Please input a valid ID number")
         elif deletion == "2":
-            productID_input = input("Please enter the product ID you would like to delete")
+            productID_input = input("Please enter the product ID you would like to delete: ")
             if productID_input.isnumeric():
                 productID = int(productID_input)
                 removeEle(products, productID)
@@ -392,14 +395,14 @@ while True:
             else:
                 print("Please input a valid ID number")
         elif deletion == "3":
-            customerID_input = input("Please enter the customer ID you would like to delete")
+            customerID_input = input("Please enter the customer ID you would like to delete: ")
             if customerID_input.isnumeric():
                 customerID = int(customerID_input)
                 removeEle(customers, customerID)
             else:
                 print("Please input a valid ID number")
         elif deletion == "4":
-            orderID_input = input("Please enter the order ID you would like to delete")
+            orderID_input = input("Please enter the order ID you would like to delete: ")
             if orderID_input.isnumeric():
                 orderID = int(orderID_input)
                 removeEle(orders, orderID)
