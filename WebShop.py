@@ -1,6 +1,10 @@
-categories = [["CatID", "CatName", "CatDescription"], [1, "gameconsoles", "gaming"], [2, "keyboards", "typing"]]
-products = [["Pid", "Pname", "Price", "CategoryId"], [1, "nintendo", 50, 1], [2, "logitech", 10, 2],
-            [3, "ps4console", 60, 1]]
+categories = [["CatID", "CatName", "CatDescription"],
+              [1, "gameconsoles", "gaming"],
+              [2, "keyboards", "typing"]]
+products = [["Pid", "Pname", "Price", "CategoryId"],
+             [1, "nintendo", 50, 1],
+             [2, "logitech", 10, 2],
+             [3, "ps4console", 60, 1]]
 customers = [["CustId", "CustEmail", "CustPhonenumber", "Address", "Location", "Country"],
              [1, "xxx@gmail.com", "110", "lucky street", "Budapest", "Hungary"],
              [2, "YYY@gmail.com", "210", "unlucky street", "Shaanxi", "China"],
