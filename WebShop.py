@@ -46,6 +46,7 @@ def printData(categories,products,customers,orders):
         for u in new_cust:
             print(u.center(8),end="  ")
         print()
+    print("-------Orders------")
     for ord in orders:
         new_ord = [str(k) for k in ord]
         for o in new_ord:
@@ -362,6 +363,9 @@ while True:
             if categoryID_input.isnumeric() == True:
                 categoryID=int(categoryID_input)
                 removeEle(categories,categoryID)
+                for prod in products:
+                    if prod[3]==categoryID:
+                        products.remove(prod)
 
             else:
                 print("Please input a valid ID number")
